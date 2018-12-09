@@ -4,8 +4,13 @@
   "description": "Frontend demo for DHSTTOS.",
   "main": "index.js",
   "dependencies": {
+    "@emotion/core": "10.0.2",
+    "@emotion/styled": "10.0.2",
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
+    "axios": "0.18.0",
+    "mobx": "5.7.0",
+    "mobx-react": "5.4.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
@@ -14,7 +19,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./src/index.html"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
