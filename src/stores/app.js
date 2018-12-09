@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { DEFAULT_SOURCE_NAME } from "../libs";
+import { DEFAULT_SOURCE_NAME } from "@libs";
 
 class AppStore {
   @observable

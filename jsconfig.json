@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es6",
+    "baseUrl": "src",
+    "paths": {
+      // "@*": ["*"],
+      "@stores/*": ["stores/*"],
+      "@stores": ["stores"],
+      "@assets/*": ["assets/*"],
+      "@assets": ["assets"],
+      "@libs/*": ["libs/*"],
+      "@libs": ["libs"],
+      "@components/*": ["components/*"],
+      "@components": ["components"],
+      "@src": ["index"]
+    },
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

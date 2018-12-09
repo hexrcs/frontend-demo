@@ -22,6 +22,12 @@
     "start": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html"
   },
+  "alias": {
+    "@libs": "./src/libs",
+    "@components": "./src/components",
+    "@stores": "./src/stores",
+    "@assets": "./assets"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DHSTTOS/frontend-demo.git"
