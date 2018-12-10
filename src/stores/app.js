@@ -2,6 +2,9 @@ import { observable, action } from "mobx";
 import { DEFAULT_SOURCE_NAME } from "@libs";
 
 class AppStore {
+  /**
+   * This is the list containing the configs for each individual diagrams
+   */
   @observable
   diagramConfigs = []; // format TBD
 
