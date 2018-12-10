@@ -60,6 +60,11 @@ class AppStore {
     },
   });
 
+  @action
+  updateGlobalFilters = (category, name) => value => {
+    this.globalFilters[category][name] = value;
+  };
+
   // more actions, everything
 }
 
