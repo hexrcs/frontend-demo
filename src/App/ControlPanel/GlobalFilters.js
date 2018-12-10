@@ -19,12 +19,17 @@ const Container = styled.div`
 const PaperContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   height: 10rem;
 `;
 
+const StyledTypography = styled(Typography)`
+  align-self: center;
+`;
+
 const StyledFormControl = styled(FormControl)`
-  align-self: flex-start;
+  flex: 1;
+  align-self: auto;
 `;
 
 const StyledFormGroup = styled(FormGroup)`
@@ -40,6 +45,13 @@ const StyledFormControlLabel = styled(FormControlLabel)`
   align-self: flex-start;
 `;
 
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+`;
+
 @observer
 class GlobalFilters extends Component {
   handleChange = (category, name) => event => {
@@ -51,83 +63,109 @@ class GlobalFilters extends Component {
       <Container>
         <Paper elevation={1}>
           <PaperContent>
-            <Typography variant="subheading" component="h3">
+            <StyledTypography variant="subheading" component="h3">
               Global Filters
-            </Typography>
-            <StyledFormControl component="fieldset">
-              <StyledFormGroup>
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer1}
-                      onChange={this.handleChange("layers", "layer1")}
-                      value="layer1"
-                    />
-                  }
-                  label="Layer 1"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer2}
-                      onChange={this.handleChange("layers", "layer2")}
-                      value="layer2"
-                    />
-                  }
-                  label="Layer 2"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer3}
-                      onChange={this.handleChange("layers", "layer3")}
-                      value="layer1"
-                    />
-                  }
-                  label="Layer 3"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer4}
-                      onChange={this.handleChange("layers", "layer4")}
-                      value="layer4"
-                    />
-                  }
-                  label="Layer 4"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer5}
-                      onChange={this.handleChange("layers", "layer5")}
-                      value="layer5"
-                    />
-                  }
-                  label="Layer 5"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer6}
-                      onChange={this.handleChange("layers", "layer6")}
-                      value="layer6"
-                    />
-                  }
-                  label="Layer 6"
-                />
-                <StyledFormControlLabel
-                  control={
-                    <Checkbox
-                      checked={appStore.globalFilters.layers.layer7}
-                      onChange={this.handleChange("layers", "layer7")}
-                      value="layer7"
-                    />
-                  }
-                  label="Layer 7"
-                />
-              </StyledFormGroup>
-            </StyledFormControl>
+            </StyledTypography>
+            <Row>
+              <StyledFormControl component="fieldset">
+                <StyledFormGroup>
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer1}
+                        onChange={this.handleChange("layers", "layer1")}
+                        value="layer1"
+                      />
+                    }
+                    label="Layer 1"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer2}
+                        onChange={this.handleChange("layers", "layer2")}
+                        value="layer2"
+                      />
+                    }
+                    label="Layer 2"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer3}
+                        onChange={this.handleChange("layers", "layer3")}
+                        value="layer1"
+                      />
+                    }
+                    label="Layer 3"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer4}
+                        onChange={this.handleChange("layers", "layer4")}
+                        value="layer4"
+                      />
+                    }
+                    label="Layer 4"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer5}
+                        onChange={this.handleChange("layers", "layer5")}
+                        value="layer5"
+                      />
+                    }
+                    label="Layer 5"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer6}
+                        onChange={this.handleChange("layers", "layer6")}
+                        value="layer6"
+                      />
+                    }
+                    label="Layer 6"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.layers.layer7}
+                        onChange={this.handleChange("layers", "layer7")}
+                        value="layer7"
+                      />
+                    }
+                    label="Layer 7"
+                  />
+                </StyledFormGroup>
+              </StyledFormControl>
+              <StyledFormControl component="fieldset">
+                <StyledFormGroup>
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.protocols.tcp}
+                        onChange={this.handleChange("protocols", "tcp")}
+                        value="tcp"
+                      />
+                    }
+                    label="TCP"
+                  />
+                  <StyledFormControlLabel
+                    control={
+                      <Checkbox
+                        checked={appStore.globalFilters.protocols.udp}
+                        onChange={this.handleChange("protocols", "udp")}
+                        value="udp"
+                      />
+                    }
+                    label="UDP"
+                  />
+                </StyledFormGroup>
+              </StyledFormControl>
+            </Row>
           </PaperContent>
         </Paper>
       </Container>
