@@ -26,7 +26,8 @@
     "@libs": "./src/libs",
     "@components": "./src/components",
     "@stores": "./src/stores",
-    "@assets": "./assets"
+    "@assets": "./src/assets",
+    "@mockdata": "./mockdata"
   },
   "repository": {
     "type": "git",

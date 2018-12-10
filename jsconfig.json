@@ -2,18 +2,20 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es6",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       // "@*": ["*"],
-      "@stores/*": ["stores/*"],
-      "@stores": ["stores"],
-      "@assets/*": ["assets/*"],
-      "@assets": ["assets"],
-      "@libs/*": ["libs/*"],
-      "@libs": ["libs"],
-      "@components/*": ["components/*"],
-      "@components": ["components"],
-      "@src": ["index"]
+      "@stores/*": ["src/stores/*"],
+      "@stores": ["src/stores"],
+      "@assets/*": ["src/assets/*"],
+      "@assets": ["src/assets"],
+      "@libs/*": ["src/libs/*"],
+      "@libs": ["src/libs"],
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@src": ["src/index"],
+      "@mockdata/*": ["mockdata/*"],
+      "@mockdata": ["mockdata"]
     },
     "experimentalDecorators": true
   },
