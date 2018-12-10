@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 const Container = styled.div`
   flex: 1;
   align-self: flex-start;
-  margin: 0 1rem;
+  margin: 0.5rem;
 `;
 
 const PaperContent = styled.div`
