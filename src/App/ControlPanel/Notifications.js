@@ -3,6 +3,6 @@ import { Container } from "@components";
 
 export default class Notifications extends Component {
   render() {
-    return <Container>This is Notifications</Container>;
+    return <div>This is Notifications</div>;
   }
 }

@@ -5,18 +5,20 @@ import GlobalFilters from "./GlobalFilters";
 import Notifications from "./Notifications";
 import UserControl from "./UserControl";
 
-import { Logo } from "@components";
+import { Logo, Column, Row } from "@components";
 
 export default class ControlPanel extends Component {
   render() {
     return (
-      <div>
-        <Logo />
-        <SourceSelector />
+      <Row>
+        <Column>
+          <Logo />
+          <SourceSelector />
+        </Column>
         <GlobalFilters />
         <Notifications />
         <UserControl />
-      </div>
+      </Row>
     );
   }
 }

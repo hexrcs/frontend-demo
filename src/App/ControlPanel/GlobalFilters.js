@@ -3,6 +3,6 @@ import { Container } from "@components";
 
 export default class GlobalFilters extends Component {
   render() {
-    return <Container>This is Global Filters</Container>;
+    return <div>This is Global Filters</div>;
   }
 }
