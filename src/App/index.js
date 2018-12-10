@@ -6,7 +6,7 @@ import ControlPanel from "./ControlPanel";
 import Footer from "./Footer";
 
 const Column = styled.div`
-  height: 95vh;
+  height: 97vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,7 +18,7 @@ class App extends Component {
       <Column>
         <ControlPanel />
         <Diagrams />
-        {/* <Footer /> */}
+        <Footer />
       </Column>
     );
   }

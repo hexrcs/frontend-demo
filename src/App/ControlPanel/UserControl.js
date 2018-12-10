@@ -15,7 +15,7 @@ export default class UserControl extends Component {
   render() {
     return (
       <Container>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="secondary">
           <StyledExitIcon />
           Sign Out
         </Button>
