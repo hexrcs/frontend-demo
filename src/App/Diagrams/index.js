@@ -47,9 +47,9 @@ class DiagramsContainer extends Component {
             </CenteredTypography>
           </StyledPaper>
         ) : (
-          appStore.diagramConfigs.map((config, index) => (
-            <StyledPaper elevation={1}>
-              <Diagram config={config} key={index} />
+          appStore.diagramConfigs.map(config => (
+            <StyledPaper elevation={1} key={config.diagramID}>
+              <Diagram config={config} />
             </StyledPaper>
           ))
         )}

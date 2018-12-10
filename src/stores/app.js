@@ -9,6 +9,12 @@ class AppStore {
   diagramConfigs = []; // format TBD
 
   @observable
+  diagramConfigModal = {
+    isOpen: false,
+    diagramID: -1,
+  };
+
+  @observable
   username = "";
 
   @observable

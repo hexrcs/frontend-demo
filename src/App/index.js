@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Diagrams from "./Diagrams";
 import ControlPanel from "./ControlPanel";
 import Footer from "./Footer";
+import DiagramConfigModal from "./DiagramConfigModal";
 
 const Column = styled.div`
   height: 97vh;
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <Column>
+        <DiagramConfigModal />
         <ControlPanel />
         <Diagrams />
         <Footer />
