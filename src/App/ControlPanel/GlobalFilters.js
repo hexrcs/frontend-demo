@@ -13,7 +13,7 @@ import { appStore } from "@stores";
 const Container = styled.div`
   flex: 1;
   align-self: flex-start;
-  margin: 0.5rem;
+  margin: 0.5rem 2rem;
 `;
 
 const PaperContent = styled.div`
@@ -21,6 +21,7 @@ const PaperContent = styled.div`
   flex-direction: column;
   align-items: stretch;
   height: 10rem;
+  padding: 0 1rem;
 `;
 
 const StyledTypography = styled(Typography)`

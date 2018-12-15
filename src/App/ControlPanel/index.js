@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 import SourceSelector from "./SourceSelector";
 import GlobalFilters from "./GlobalFilters";
-import Notifications from "./Notifications";
 import UserControl from "./UserControl";
 
 import { Logo, Column } from "@components";
@@ -22,7 +21,6 @@ export default class ControlPanel extends Component {
           <SourceSelector />
         </Column>
         <GlobalFilters />
-        <Notifications />
         <UserControl />
       </Row>
     );
