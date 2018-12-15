@@ -31,17 +31,17 @@ class AppStore {
   @observable
   globalFilters = {
     layers: {
-      layer1: true,
-      layer2: true,
-      layer3: true,
-      layer4: true,
-      layer5: true,
-      layer6: true,
-      layer7: true,
+      layer1: false,
+      layer2: false,
+      layer3: false,
+      layer4: false,
+      layer5: false,
+      layer6: false,
+      layer7: false,
     },
     protocols: {
-      tcp: true,
-      udp: true,
+      tcp: false,
+      udp: false,
       // more protocols
     },
   };
@@ -54,17 +54,17 @@ class AppStore {
   @action
   resetGlobalFilters = () => ({
     layers: {
-      layer1: true,
-      layer2: true,
-      layer3: true,
-      layer4: true,
-      layer5: true,
-      layer6: true,
-      layer7: true,
+      layer1: false,
+      layer2: false,
+      layer3: false,
+      layer4: false,
+      layer5: false,
+      layer6: false,
+      layer7: false,
     },
     protocols: {
-      tcp: true,
-      udp: true,
+      tcp: false,
+      udp: false,
       // more protocols
     },
   });
