@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "@emotion/styled";
 
-import SourceSelector from "./SourceSelector";
 import GlobalFilters from "./GlobalFilters";
 import UserControl from "./UserControl";
 
@@ -18,7 +17,6 @@ export default class ControlPanel extends Component {
       <Row>
         <Column>
           <Logo />
-          <SourceSelector />
         </Column>
         <GlobalFilters />
         <UserControl />
