@@ -49,3 +49,9 @@ enableShapedPoints: boolean
 pointSize: number px
 pointOpacity: 0 <= number <= 1
 ```
+
+### "Pseudo" UML class diagram
+
+Since it's not OO, we might just use a prettier version of the stuff below to substitute the class diagrams. (Just my opinion)
+
+![Structure Tree](./structure/App.png)
