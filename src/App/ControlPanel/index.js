@@ -9,6 +9,7 @@ import { Logo, Column } from "@components";
 const Row = styled.div`
   display: flex;
   margin: 0 1rem;
+  align-items: center;
 `;
 
 export default class ControlPanel extends Component {
