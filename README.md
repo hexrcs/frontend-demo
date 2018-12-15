@@ -14,6 +14,7 @@ yAxis: enum JSON attributes
 enableLegends: boolean
 enableTooltip: boolean
 enableAnimation: boolean
+diagramType: enum Diagram types
 source: enum Source names
 ```
 
