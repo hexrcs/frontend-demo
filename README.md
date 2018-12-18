@@ -11,6 +11,8 @@ On Windows, the design file can be opened/edited with an awesome free app [Lunac
 ```
 xAxis: enum JSON attributes
 yAxis: enum JSON attributes
+useColor: boolean
+colorBy: enum JSON attributes
 enableLegends: boolean
 enableTooltip: boolean
 enableAnimation: boolean
