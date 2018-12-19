@@ -1,0 +1,59 @@
+@startuml
+title GUI Overview
+
+class Store << (S,Yellow) data store >> {
+  ==observables==
+  # username
+
+  # diagramConfigs
+  # diagramConfigModal
+  # sourcesAvailable
+
+  # globalFilters
+
+  # data
+  # availableRange
+  # currentRanges
+  ==computed==
+  # neededRanges
+  ==actions==
+  # resetDiagramConfigs()
+  # resetGlobalFilters()
+  # updateGlobalFilters(category, name)
+
+  # updateCurrentRangeTo(start, end)
+
+  - pullData()
+}
+
+class App << (C,red) container >> {
+}
+
+class DiagramConfigModal << (C,red) container >> {
+}
+
+class Brush << (C,blue) component observer >> {
+  - availableRange
+  - currentRanges
+  ==action==
+  # updateCurrentRangeTo(start, end)
+}
+
+class ControlPanel << (C,red) container >> {
+}
+
+class GlobalFilters << (C,red) container >> {
+  updateGlobalFilters
+}
+
+class Diagrams << (C,red) container >> {
+}
+
+class Footer << (C,red) container >> {
+}
+
+class Brush << (C,blue) component >> {
+
+}
+
+@enduml
