@@ -7,7 +7,7 @@ class App << (C,red) container >> {
 class ControlPanel << (C,red) container >> {
 }
 
-class GlobalFilters << (C,red) container >> {
+class GlobalFiltersContainer << (C,red) container >> {
 }
 
 class GlobalFilter << (C,pink) component observer >> {
@@ -106,22 +106,10 @@ class NetworkPlotConfigs  << (C,pink) component observer >> {
   updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
-class Brush << (C,pink) component observer >> {
-  ~ DataStore
-  ==observes==
-  ~ availableRange
-  ~ currentRanges
-  ==props==
-  availableRange
-  currentRanges
-  ==action==
-  updateCurrentRangeTo(start, end)
+class DiagramsContainer << (C,red) container >> {
 }
 
-class Diagrams << (C,red) container >> {
-}
-
-class Plot << (C,red) container >> {
+class PlotContainer << (C,red) container >> {
 }
 
 class TimeLinePlot  << (C,pink) component observer >> {
@@ -184,12 +172,50 @@ class DiagramControl << (C,pink) component >> {
   dispose()
 }
 
-class Footer << (C,red) container >> {
+class FooterContainer << (C,red) container >> {
+}
+
+class BrushBar << (C,pink) component observer >> {
+  ~ DataStore
+  ==observes==
+  ~ availableRange
+  ~ currentRanges
+  ==props==
+  availableRange
+  currentRanges
+  ==action==
+  updateCurrentRangeTo(start, end)
 }
 
 class NewDiagramButton << (C,pink) component >> {
   ==actions==
   newDiagram()
 }
+
+' Now the relationship part
+
+App *-- DiagramConfigsModal
+App *-- ControlPanel
+App *-- DiagramsContainer
+App *-- FooterContainer
+
+ControlPanel *-- GlobalFiltersContainer
+GlobalFiltersContainer "1" *-- "many" GlobalFilter
+ControlPanel *-- UserController
+
+DiagramConfigsModal *-- GenericConfigs
+DiagramConfigsModal *-- DiagramSpecificConfigs
+DiagramSpecificConfigs <|-- TimeLinePlotConfigs
+DiagramSpecificConfigs <|-- ScatterPlotConfigs
+DiagramSpecificConfigs <|-- NetworkPlotConfigs
+
+DiagramsContainer *-- PlotContainer
+PlotContainer <|-- TimeLinePlot
+PlotContainer <|-- ScatterPlot
+PlotContainer <|-- NetworkPlot
+DiagramsContainer *-- DiagramControl
+
+FooterContainer *-- BrushBar
+FooterContainer *-- NewDiagramButton
 
 @enduml
