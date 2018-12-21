@@ -11,185 +11,57 @@ class GlobalFiltersContainer << (C,red) container >> {
 }
 
 class GlobalFilter << (C,pink) component observer >> {
-  ~ UIStore
-  ==observes==
-  ~ globalFilters
-  ==props==
-  category
-  name
-  ==actions==
-  updateGlobalFilters(category, name)
 }
 
 class UserController << (C,pink) component observer >> {
-  ~ UIStore
-  ==observes==
-  ~ userDetails
-  ==props==
-  userDetails
-  ==actions==
-  logout()
 }
 
 class DiagramConfigsModal << (C,red) container observer >> {
-  ~ UIStore
-  ==observes==
-  ~ diagramConfigModal
-  ~ isDiagramConfigModalActive
-  ==props==
-  isDiagramConfigModalActive
 }
 
 class GenericConfigs << (C,pink) component observer >> {
-  ~ DataStore
-  ~ UIStore
-  ==observes==
-  ~ sourcesAvailable
-  ~ diagramConfigModal
-  ==props==
-  sourcesAvailable
-  diagramType
-  axisChoices
-  useColor
-  colorBy
-  enableLegends
-  enableTooltip
-  enableAnimation
-  diagramType
-  ==actions==
-  updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class DiagramSpecificConfigs << (C,red) container >> {
 }
 
 class TimeLinePlotConfigs  << (C,pink) component observer >> {
-  ~ UIStore
-  ==observes==
-  ~ diagramConfigModal
-  ==props==
-  lineWidth
-  lineOpacity
-  enablePoints
-  enableShapedPoints
-  pointSize
-  pointOpacity
-  enableArea
-  areaOpacity
-  ==actions==
-  updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class ScatterPlotConfigs  << (C,pink) component observer >> {
-  ~ UIStore
-  ==observes==
-  ~ diagramConfigModal
-  ==props==
-  enableShapedPoints
-  pointSize
-  pointOpacity
-  ==actions==
-  updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class NetworkPlotConfigs  << (C,pink) component observer >> {
-  ~ UIStore
-  ==observes==
-  ~ diagramConfigModal
-  ==props==
-  lineWidth
-  lineOpacity
-  enableShapedPoints
-  pointSize
-  pointOpacity
-  ==actions==
-  updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class DiagramsContainer << (C,red) container >> {
+}
+
+class DiagramContainer << (C,red) container >> {
 }
 
 class PlotContainer << (C,red) container >> {
 }
 
 class TimeLinePlot  << (C,pink) component observer >> {
-  ~ DataStore
-  ~ UIStore
-
-  - zoomLevel
-  - isMaximized
-  ==observes==
-  ~ data
-  ~ diagramConfigs
-  ==props==
-  lineWidth
-  lineOpacity
-  enablePoints
-  enableShapedPoints
-  pointSize
-  pointOpacity
-  enableArea
-  areaOpacity
 }
 
 class ScatterPlot  << (C,pink) component observer >> {
-  ~ DataStore
-  ~ UIStore
-
-  - zoomLevel
-  - isMaximized
-  ==observes==
-  ~ data
-  ~ diagramConfigs
-  ==props==
-  enableShapedPoints
-  pointSize
-  pointOpacity
 }
 
 class NetworkPlot  << (C,pink) component observer >> {
-  ~ DataStore
-  ~ UIStore
-
-  - zoomLevel
-  - isMaximized
-  ==observes==
-  ~ data
-  ~ diagramConfigs
-  ==props==
-  lineWidth
-  lineOpacity
-  enableShapedPoints
-  pointSize
-  pointOpacity
 }
 
 class DiagramControl << (C,pink) component >> {
-  ==actions==
-  configureDiagram()
-  configureFilters()
-  maximize()
-  dispose()
 }
 
 class FooterContainer << (C,red) container >> {
 }
 
 class BrushBar << (C,pink) component observer >> {
-  ~ DataStore
-  ==observes==
-  ~ availableRange
-  ~ currentRanges
-  ==props==
-  availableRange
-  currentRanges
-  ==action==
-  updateCurrentRangeTo(start, end)
 }
 
 class NewDiagramButton << (C,pink) component >> {
-  ==actions==
-  newDiagram()
 }
 
 ' Now the relationship part
@@ -209,11 +81,12 @@ DiagramSpecificConfigs <|-- TimeLinePlotConfigs
 DiagramSpecificConfigs <|-- ScatterPlotConfigs
 DiagramSpecificConfigs <|-- NetworkPlotConfigs
 
-DiagramsContainer *-- PlotContainer
+DiagramsContainer "1" *-- "many" DiagramContainer
+DiagramContainer *-- PlotContainer
 PlotContainer <|-- TimeLinePlot
 PlotContainer <|-- ScatterPlot
 PlotContainer <|-- NetworkPlot
-DiagramsContainer *-- DiagramControl
+DiagramContainer *-- DiagramControl
 
 FooterContainer *-- BrushBar
 FooterContainer *-- NewDiagramButton
