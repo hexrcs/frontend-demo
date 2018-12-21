@@ -1,13 +1,82 @@
 @startuml
 title GUI Overview
 
+interface DiagramConfigObject << (T,brown) type >> {
+  id: number
+  sourcesAvailable: enum
+  diagramType: enum
+  axisChoices: enum
+  useColor: bool
+  colorBy: enum
+  enableLegends: bool
+  enableTooltip: bool
+  enableAnimation: bool
+  diagramType: enum
+
+  diagramSpecificConfig: DiagramSpecificConfigObject
+}
+
+interface DiagramSpecificConfigObject << (T,brown) type >> {
+}
+
+interface TimeLinePlotConfigObject << (T,brown) type >> {
+  lineWidth: number
+  lineOpacity: number
+  enablePoints: bool
+  enableShapedPoints: bool
+  pointSize: number
+  pointOpacity: number
+  enableArea: bool
+  areaOpacity: number
+}
+
+interface ScatterPlotConfigObject << (T,brown) type >> {
+  enableShapedPoints: bool
+  pointSize: number
+  pointOpacity: number
+}
+
+interface NetworkConfigObject << (T,brown) type >> {
+  lineWidth: number
+  lineOpacity: number
+  enableShapedPoints: bool
+  pointSize: number
+  pointOpacity: number
+}
+
+interface DataPoint << (T,brown) type >> {
+  L2Protocol: string
+  SourceMACAddress: string
+  L4Protocol: string
+  SourceIPAddress: string
+  PacketSummary: string
+  PacketID: number
+  DestinationIPAddress: string
+  Timestamp: number
+  DestinationPort: string
+  SourcePort: number
+  L3Protocol: string
+  DestinationMACAddress: string
+}
+
+interface UserDetails << (T,brown) type >> {
+  userName: string
+  basicAuthToken: string
+}
+
+interface GlobalFilterObject << (T,brown) type >> {
+  category: string
+  name: string
+  value: bool
+}
+
 class DataStore << (S,Yellow) state store >> {
   ==observables==
-  # data
-  # availableRange
-  # currentRanges
+  # data: List<DataPoint>
+  # availableRange: Tuple<number, number>
+  # currentRanges: List<Tuple<number, number>>
   ==computed==
-  # neededRanges
+  # neededRanges: List<Tuple<number, number>>
   ==actions==
   # updateCurrentRangeTo(start, end)
   - pullData()
@@ -15,14 +84,14 @@ class DataStore << (S,Yellow) state store >> {
 
 class UIStore << (S,Yellow) state store >> {
   ==observables==
-  # userDetails
+  # userDetails: UserDetails
 
-  # diagramConfigs
-  # diagramConfigModal
-  # isDiagramConfigModalActive
-  # sourcesAvailable
+  # diagramConfigs: List<DiagramConfigObject>
+  # diagramConfigModal: DiagramConfigObject
+  # isDiagramConfigModalActive: bool
+  # sourcesAvailable: enum
 
-  # globalFilters
+  # globalFilters: List<GlobalFilterObject>
   ==actions==
   # logout()
   # newDiagram()
@@ -30,7 +99,7 @@ class UIStore << (S,Yellow) state store >> {
   # resetDiagramConfigs()
   # updateDiagramConfigs(origDiagConf, newValsForOverride)
   # resetGlobalFilters()
-  # updateGlobalFilters(category, name)
+  # updateGlobalFilters(category, name, value)
 }
 
 class App << (C,red) container >> {
