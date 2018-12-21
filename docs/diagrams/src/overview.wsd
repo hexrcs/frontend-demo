@@ -25,7 +25,8 @@ class UIStore << (S,Yellow) state store >> {
   # globalFilters
   ==actions==
   # logout()
-
+  # newDiagram()
+  
   # resetDiagramConfigs()
   # updateDiagramConfigs(origDiagConf, newValsForOverride)
   # resetGlobalFilters()
@@ -43,28 +44,23 @@ class GlobalFilters << (C,red) container >> {
 
 class GlobalFilter << (C,pink) component observer >> {
   ~ UIStore
-
   ==props==
   category
   name
-
   ==actions==
   updateGlobalFilters(category, name)
 }
 
 class UserController << (C,pink) component observer >> {
   ~ UIStore
-
   ==props==
   userDetails
-
   ==actions==
   logout()
 }
 
 class DiagramConfigsModal << (C,red) container observer >> {
   ~ UIStore
-
   ==props==
   isDiagramConfigModalActive
 }
@@ -72,7 +68,6 @@ class DiagramConfigsModal << (C,red) container observer >> {
 class GenericConfigs << (C,pink) component observer >> {
   ~ DataStore
   ~ UIStore
-
   ==props==
   sourcesAvailable
   diagramType
@@ -83,7 +78,6 @@ class GenericConfigs << (C,pink) component observer >> {
   enableTooltip
   enableAnimation
   diagramType
-
   ==actions==
   updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
@@ -93,7 +87,6 @@ class DiagramSpecificConfigs << (C,red) container >> {
 
 class TimeLinePlotConfigs  << (C,pink) component observer >> {
   ~ UIStore
-
   ==props==
   lineWidth
   lineOpacity
@@ -103,52 +96,103 @@ class TimeLinePlotConfigs  << (C,pink) component observer >> {
   pointOpacity
   enableArea
   areaOpacity
-
   ==actions==
   updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class ScatterPlotConfigs  << (C,pink) component observer >> {
   ~ UIStore
-
   ==props==
   enableShapedPoints
   pointSize
   pointOpacity
-
   ==actions==
   updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class NetworkPlotConfigs  << (C,pink) component observer >> {
   ~ UIStore
-
   ==props==
   lineWidth
   lineOpacity
   enableShapedPoints
   pointSize
   pointOpacity
-
   ==actions==
   updateDiagramConfigs(origDiagConf, newValsForOverride)
 }
 
 class Brush << (C,pink) component observer >> {
-  - availableRange
-  - currentRanges
+  ~ DataStore
+  ==props==
+  availableRange
+  currentRanges
   ==action==
-  # updateCurrentRangeTo(start, end)
+  updateCurrentRangeTo(start, end)
 }
 
 class Diagrams << (C,red) container >> {
 }
 
+class Plot << (C,red) container >> {
+}
+
+class TimeLinePlot  << (C,pink) component observer >> {
+  ~ DataStore
+  ~ UIStore
+
+  - zoomLevel
+  - isMaximized
+  ==props==
+  lineWidth
+  lineOpacity
+  enablePoints
+  enableShapedPoints
+  pointSize
+  pointOpacity
+  enableArea
+  areaOpacity
+}
+
+class ScatterPlot  << (C,pink) component observer >> {
+  ~ DataStore
+  ~ UIStore
+
+  - zoomLevel
+  - isMaximized
+  ==props==
+  enableShapedPoints
+  pointSize
+  pointOpacity
+}
+
+class NetworkPlot  << (C,pink) component observer >> {
+  ~ DataStore
+  ~ UIStore
+
+  - zoomLevel
+  - isMaximized
+  ==props==
+  lineWidth
+  lineOpacity
+  enableShapedPoints
+  pointSize
+  pointOpacity
+}
+
+class DiagramControl << (C,pink) component >> {
+  ==actions==
+  configureDiagram()
+  configureFilters()
+  maximize()
+  dispose()
+}
+
 class Footer << (C,red) container >> {
 }
 
-class Brush << (C,blue) component >> {
-
+class NewDiagramButton << (C,pink) component >> {
+  ==actions==
+  newDiagram()
 }
-
 @enduml
