@@ -1,49 +1,144 @@
 @startuml
 title GUI Overview
 
-class Store << (S,Yellow) data store >> {
+class DataStore << (S,Yellow) state store >> {
   ==observables==
-  # username
-
-  # diagramConfigs
-  # diagramConfigModal
-  # sourcesAvailable
-
-  # globalFilters
-
   # data
   # availableRange
   # currentRanges
   ==computed==
   # neededRanges
   ==actions==
-  # resetDiagramConfigs()
-  # resetGlobalFilters()
-  # updateGlobalFilters(category, name)
-
   # updateCurrentRangeTo(start, end)
-
   - pullData()
 }
 
+class UIStore << (S,Yellow) state store >> {
+  ==observables==
+  # userDetails
+
+  # diagramConfigs
+  # diagramConfigModal
+  # isDiagramConfigModalActive
+  # sourcesAvailable
+
+  # globalFilters
+  ==actions==
+  # logout()
+
+  # resetDiagramConfigs()
+  # updateDiagramConfigs(origDiagConf, newValsForOverride)
+  # resetGlobalFilters()
+  # updateGlobalFilters(category, name)
+}
+
 class App << (C,red) container >> {
-}
-
-class DiagramConfigModal << (C,red) container >> {
-}
-
-class Brush << (C,blue) component observer >> {
-  - availableRange
-  - currentRanges
-  ==action==
-  # updateCurrentRangeTo(start, end)
 }
 
 class ControlPanel << (C,red) container >> {
 }
 
 class GlobalFilters << (C,red) container >> {
-  updateGlobalFilters
+}
+
+class GlobalFilter << (C,pink) component observer >> {
+  ~ UIStore
+
+  ==props==
+  category
+  name
+
+  ==actions==
+  updateGlobalFilters(category, name)
+}
+
+class UserController << (C,pink) component observer >> {
+  ~ UIStore
+
+  ==props==
+  userDetails
+
+  ==actions==
+  logout()
+}
+
+class DiagramConfigsModal << (C,red) container observer >> {
+  ~ UIStore
+
+  ==props==
+  isDiagramConfigModalActive
+}
+
+class GenericConfigs << (C,pink) component observer >> {
+  ~ DataStore
+  ~ UIStore
+
+  ==props==
+  sourcesAvailable
+  diagramType
+  axisChoices
+  useColor
+  colorBy
+  enableLegends
+  enableTooltip
+  enableAnimation
+  diagramType
+
+  ==actions==
+  updateDiagramConfigs(origDiagConf, newValsForOverride)
+}
+
+class DiagramSpecificConfigs << (C,red) container >> {
+}
+
+class TimeLinePlotConfigs  << (C,pink) component observer >> {
+  ~ UIStore
+
+  ==props==
+  lineWidth
+  lineOpacity
+  enablePoints
+  enableShapedPoints
+  pointSize
+  pointOpacity
+  enableArea
+  areaOpacity
+
+  ==actions==
+  updateDiagramConfigs(origDiagConf, newValsForOverride)
+}
+
+class ScatterPlotConfigs  << (C,pink) component observer >> {
+  ~ UIStore
+
+  ==props==
+  enableShapedPoints
+  pointSize
+  pointOpacity
+
+  ==actions==
+  updateDiagramConfigs(origDiagConf, newValsForOverride)
+}
+
+class NetworkPlotConfigs  << (C,pink) component observer >> {
+  ~ UIStore
+
+  ==props==
+  lineWidth
+  lineOpacity
+  enableShapedPoints
+  pointSize
+  pointOpacity
+
+  ==actions==
+  updateDiagramConfigs(origDiagConf, newValsForOverride)
+}
+
+class Brush << (C,pink) component observer >> {
+  - availableRange
+  - currentRanges
+  ==action==
+  # updateCurrentRangeTo(start, end)
 }
 
 class Diagrams << (C,red) container >> {
